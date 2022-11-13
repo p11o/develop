@@ -7,7 +7,7 @@ from requests_oauthlib import OAuth2Session
 CLIENT_ID = os.environ['OAUTH_CLIENT_ID']
 SCOPE = os.getenv('OAUTH_SCOPE', 'email,profile,openid').split(',')
 REDIRECT_URI = os.environ['OAUTH_REDIRECT_URI'] # my callback
-AUTHORIZATION_BASE_URL = os.env['OAUTH_AUTHORIZATION_BASE_URL']
+AUTHORIZATION_BASE_URL = os.environ['OAUTH_AUTHORIZATION_BASE_URL']
 COOKIE_SESSION_MAX_AGE = 60 * 10 # ten minutes
 
 

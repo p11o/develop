@@ -14,7 +14,14 @@ resource "aws_cognito_user_pool" "main" {
 resource "aws_cognito_user_pool_client" "main" {
   name = "main"
 
-  user_pool_id = aws_cognito_user_pool.main.id
+  user_pool_id                         = aws_cognito_user_pool.main.id
+  allowed_oauth_flows_user_pool_client = true
+  generate_secret                      = true
+
+  callback_urls                = ["${local.app_url}/callback"]
+  allowed_oauth_flows          = ["code"]
+  allowed_oauth_scopes         = ["email", "openid", "profile"]
+  supported_identity_providers = ["COGNITO"]
 }
 
 resource "aws_cognito_user_pool_domain" "main" {
